@@ -12,7 +12,10 @@ class StoreUserSeed extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => str_random(6),
+
+            'first_name' => 'test',
+            'last_name'=>'test',
+            'username'=>'test',
             'email' => 'test@yopmail.com',
             'password' => bcrypt('test@123'),
             'role'=>1

@@ -45,21 +45,8 @@ class JwtAuthCustom
             }
 
             
-
-            if ($user->status == 1) {
-                return $next($request);
-            } else {
-                $token->delete();
-                JWTAuth::invalidate();
-
-                if ($user->status == 3) {
-                    return response()->json(['message' => 'You are disabled by the admin',], 401);
-                } else if ($user->status == 5) {
-                    return response()->json(['message' => 'You account is deleted from the system',], 401);
-                } else {
-                    return response()->json(['message' => 'Something went wrong!',], 401);
-                }
-            }
+            return $next($request);
+            
         } catch (TokenExpiredException $e) {
             
             return response()->json([

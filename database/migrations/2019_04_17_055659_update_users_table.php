@@ -15,11 +15,16 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('role')->default(1);
+            $table->integer('user_id')->nullable();
             $table->string('phone_number')->nullable();
-            $table->boolean('phone_verified')->nullable();
+            $table->string('device_token')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->string('image')->nullable();
-            $table->string('store_name')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('city')->nullable();
+            $table->string('pin')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
@@ -33,10 +38,15 @@ class UpdateUsersTable extends Migration
       Schema::table('users', function (Blueprint $table) {
           $table->dropColumn('role');
           $table->dropColumn('phone_number');
-          $table->dropColumn('phone_verified');
+          $table->dropColumn('device_token');
           $table->dropColumn('last_login');
           $table->dropColumn('image');
-          $table->dropColumn('store_name');
+          $table->dropColumn('first_name');
+          $table->dropColumn('last_name');
+          $table->dropColumn('user_id');
+           $table->dropColumn('deleted_at');
+           $table->dropColumn('city');
+           $table->dropColumn('pin');
       });
     }
 }
